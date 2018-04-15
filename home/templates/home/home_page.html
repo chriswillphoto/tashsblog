@@ -1,9 +1,12 @@
 {% extends "base.html" %}
-
 {% load wagtailcore_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    {{ page.body|richtext }}
+{% include "includes/test.html" %}
+
+    <div class="intro-about">
+        {{ page.intro_about|richtext }}
+    </div>
 {% endblock %}
