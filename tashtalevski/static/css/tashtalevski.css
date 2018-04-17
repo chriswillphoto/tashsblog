@@ -1,0 +1,9 @@
+* {margin: 0; padding: 0; box-sizing: border-box; border-collapse: collapse;}
+
+.homepage nav {
+  background-color: blue;
+  height: 25px;
+}
+
+.homepage nav .nav-item { display:inline-block; color: white; }
+.nav-item .nav-link { color: white; }

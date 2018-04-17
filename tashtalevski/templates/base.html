@@ -10,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>
             {% block title %}
-                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+                {% if self.seo_title %}{% spaceless %}{{ self.seo_title }}{% endspaceless %}{% else %}{{ self.title }}{% endif %}
             {% endblock %}
             {% block title_suffix %}
                 {% with self.get_site.site_name as site_name %}
@@ -35,10 +35,11 @@
         {% block content %}{% endblock %}
 
         {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/tashtalevski.js' %}"></script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
+        <script type="text/javascript" src="{% static 'js/tashtalevski.js' %}"></script>
+        
     </body>
 </html>
