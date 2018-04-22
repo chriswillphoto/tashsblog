@@ -1,21 +1,26 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
-
+{% load menu_tags %}
 {% block body_class %}homepage{% endblock %}
 
 {% block content %}
 {% include "includes/test.html"  %}
 <div class="hero-banner">
+    <img src="https://res.cloudinary.com/dyqesnour/image/upload/v1524274117/HeroBanner_vu4ly3.jpg" alt="Tash Talevski Yoga">
     <nav>
         <div class="nav-logo">
-
+            <div id="circle-left"></div>
+            <div id="circle-right"></div>
         </div>
-        {% for navitem in page.get_children %}
-        <div class="nav-item">
-           <a class="nav-link" href="{% pageurl navitem %}">{{navitem.title}}</a> 
+        <div class="main-nav">
+        {% main_menu %}
         </div>
-        {% endfor %}
     </nav>
+
+    <div class="banner-text">
+        <h1>Tash Talevski</h1>
+        <h2>{{ page.subheading }}</h2>
+    </div>
 </div>
 <div class="quadtriptych">
     <div class="group">

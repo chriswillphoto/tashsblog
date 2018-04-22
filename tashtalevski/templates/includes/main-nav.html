@@ -1,0 +1,13 @@
+<nav>
+    <div class="nav-logo">
+        <div id="circle-left"></div>
+        <div id="circle-right"></div>
+    </div>
+    <div class="main-nav">
+    {% for navitem in page.get_children %}
+        <div class="nav-item">
+        <a class="nav-link" href="{% pageurl navitem %}">{{navitem.title}}</a> 
+        </div>
+    {% endfor %}
+    </div>
+</nav>
