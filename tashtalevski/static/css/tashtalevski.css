@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Allura');
 
-* {margin: 0; padding: 0; box-sizing: border-box; border-collapse: collapse;}
+* {margin: 0; padding: 0; box-sizing: border-box; border-collapse: collapse; vertical-align: top;}
+.group { width: 100%; line-height: 0; font-size: 0; padding: 36px; }
+.group > * { display: inline-block; line-height: initial; font-size: initial; height: inherit;}
+p { font-size: 14px;}
+
+.col-md-8 { width: calc(100% / 12 * 8) }
+.col-md-4 { width: calc(100% / 12 * 4) }
 
 .homepage .hero-banner                  { position: relative; height: 85vh; }
 .homepage .hero-banner .banner-text     { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; }
@@ -12,4 +18,12 @@
 #circle-right                           { left: 24px; }
 .homepage nav .main-nav                 { position: absolute; right: 24px; padding: 8px 8px; top: 50%; transform: translateY(-50%);}
 .homepage nav .nav-item                 { display:inline-block; color: white; margin-left: 8px; text-decoration: none; font-size: 20px; }
-.nav-item .nav-link                     { color: white; }
+.nav-item .nav-link                     { color: white; text-decoration: none;}
+
+.homepage .quadtriptych                 { padding: 36px; text-align: center; }
+.homepage .quadtriptych .group          { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.homepage  .group h3                    { margin-bottom: 12px; }
+
+.homepage .group.about                  { height: 400px; text-align: center; }
+.homepage .group.about p                { text-align: left; }
+.homepage .about-image                  { object-fit: cover; object-position: 80% center; max-width: 100%; height: 100%; }
