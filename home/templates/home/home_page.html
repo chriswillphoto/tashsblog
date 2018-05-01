@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
+{% load static %}
 {% load menu_tags %}
 {% block body_class %}homepage{% endblock %}
 
@@ -10,47 +11,36 @@
 
 {% include "includes/test.html"  %}
 <div class="hero-banner">
-    <img src="https://res.cloudinary.com/dyqesnour/image/upload/v1524274117/HeroBanner_vu4ly3.jpg" alt="Tash Talevski Yoga">
-    <nav>
-        <div class="nav-logo">
-            <div id="circle-left"></div>
-            <div id="circle-right"></div>
-        </div>
-        <div class="main-nav">
-        {% main_menu template="menus/custom_main_menu.html" %}
-        </div>
-    </nav>
+    <img src="/media/{{page.hero_banner}}" alt="Tash Talevski Yoga">
+    
 
     <div class="banner-text">
-        {% if page.info_heading_1 %}
-            whatever
-        {% endif %}
-        <h1>Tash Talevski</h1>
-        <h2>{{ page.subheading }}</h2>
+        <h2>Tash Talevski</h2>
+        <h1>{{ page.subheading }}</h1>
     </div>
 </div>
 <div class="quadtriptych">
     <div class="group">
         {% if page.info_heading_1 and page.info_box_1 %}
-        <div class="md-col-3">
+        <div class="quad-item">
             <h3>{{page.info_heading_1}}</h3>
             <p>{{page.info_box_1}}</p>
         </div>
         {% endif %}
         {% if page.info_heading_2 and page.info_box_2 %}
-        <div class="md-col-3">
+        <div class="quad-item">
             <h3>{{page.info_heading_2}}</h3>
-            <p>{{page.info_box_2}}</p>            
+            <p>{{page.info_box_2}}</p>
         </div>
         {% endif %}
         {% if page.info_heading_3 and page.info_box_3 %}
-        <div class="md-col-3">
+        <div class="quad-item">
             <h3>{{page.info_heading_3}}</h3>
             <p>{{page.info_box_3}}</p>
         </div>
         {% endif %}
         {% if page.info_heading_4 and page.info_box_4 %}
-        <div class="md-col-3">
+        <div class="quad-item">
             <h3>{{page.info_heading_4}}</h3>
             <p>{{page.info_box_4}}</p>
         </div>
@@ -59,14 +49,58 @@
 </div>
 <div class="about-tash-intro">
     <div class="group about">
-        <div class="col-md-8">
-            <h3>About</h3>
-            {{ page.intro_about|richtext }}
+        <div class="col-md-8 about-text-container">
+            <div class="about-text">
+                <h3>About</h3>
+                {{ page.intro_about|richtext }}
+            </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 about-img-container">
             <img src="/media/{{page.intro_about_image}}" alt="About Tash" class="about-image">
         </div>
     </div>
 </div>
 
+<h2 class="blogpost-heading"> - Recent Blogposts - </h2>
+<div class="recent-blogposts">
+    {% for blog in page.blogs %}
+    <div class="recent-post {% if forloop.first %}highlight-post{% endif %}">
+        <img src="/media/{{blog.banner_image}}" alt="{{blog.title}} Thumbnail">
+        <h3>{{blog.title}}</h3>
+        <p>{{blog.intro}}</p>
+        <a href="{{blog.url}}">Read More...</a>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="socials-banner" style="background-image: url(/media/{{page.social_banner}})">
+    <h3>Find Me On Social Media</h3>
+    <div class="social-icons">
+        <a href="#">
+            <img src="/media/icons/gram.png" alt="Instagram">
+        </a>
+        <a href="#">
+            <img src="/media/icons/twitter.png" alt="Twitter">
+        </a>
+        <a href="#">
+            <img src="/media/icons/youtube.png" alt="Youtube">
+        </a>
+    </div>
+</div>
+
+<div class="footer" style="background-color: slategrey;">
+    <div class="newsletter-signup">
+        <h5>Signup to the newsletter: </h5>
+        <input type="text" placeholder="Name">
+        <input type="text" placeholder="Email Address">
+        <input type="submit">
+    </div>
+    
+    <small>Website designed and built by <a href="https://thechriswill.com">ChrisWill</a></small>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'js/homepage.js' %}"></script>
 {% endblock %}

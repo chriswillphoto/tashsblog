@@ -19,16 +19,19 @@ class BlogIndexPage(Page):
 
 class BlogPage(Page):
   date = models.DateField("Post date")
+  banner_image = models.ImageField(upload_to="blogbanners", blank=True)
   intro = models.CharField(max_length=250)
   body = RichTextField(blank=True)
 
   search_fields = Page.search_fields + [
     index.SearchField('intro'),
+    index.SearchField('title'),
     index.SearchField('body'),
   ]
 
   content_panels = Page.content_panels + [
     FieldPanel('date'),
+    FieldPanel('banner_image'),    
     FieldPanel('intro'),
     FieldPanel('body', classname="full"),
     InlinePanel('gallery_images', label="Gallery Images"),

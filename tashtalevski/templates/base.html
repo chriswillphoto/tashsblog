@@ -1,4 +1,4 @@
-{% load static wagtailuserbar %}
+{% load static wagtailuserbar menu_tags %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -31,15 +31,24 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
-
+        <nav>
+            <a href="/">
+                <div class="nav-logo">
+                    <div id="circle-left"></div>
+                    <div id="circle-right"></div>
+                </div>
+            </a>
+            <div class="main-nav">
+            {% main_menu template="menus/custom_main_menu.html" %}
+            </div>
+        </nav>
         {% block content %}{% endblock %}
 
         {# Global javascript #}
-
+        <script type="text/javascript" src="{% static 'js/tashtalevski.js' %}"></script>
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
-        <script type="text/javascript" src="{% static 'js/tashtalevski.js' %}"></script>
         
     </body>
 </html>

@@ -2,6 +2,8 @@
 
 {% load wagtailcore_tags %}
 
+{% block body_class %}page-{{page.title}} landing-page{% endblock %}
+
 {% block content %}
 {% for block in page.body %}
   {% if block.block_type == 'heading' %}
