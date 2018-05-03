@@ -18,6 +18,8 @@ nav .main-nav                 { position: absolute; right: 24px; padding: 8px 8p
 nav .nav-item                 { display:inline-block; color: white; margin-left: 8px; text-decoration: none; font-size: 20px; }
 .nav-item .nav-link                     { color: white; text-decoration: none;}
 
+nav.hidden-nav                { top: -10%; }
+
 
 nav.scrolldown { top: -56px; }
 
@@ -56,11 +58,12 @@ nav.scrolldown { top: -56px; }
 .homepage .social-icons a {transition: filter 0.6s; text-decoration: none;}
 .homepage .social-icons a:hover { filter: brightness(0.6); }
 
-.homepage .footer { display: grid; grid-template-rows: 1fr 1fr; align-items: center; justify-content: center; height: 56px; }
+.homepage .footer { display: grid; grid-template-rows: 4fr 1fr; align-items: center; justify-content: center; height: 120px; }
 .homepage .footer small { text-align: center; }
 .footer small a { line-height: 18px; }
-.footer .newsletter-signup h5 { display: inline-block; }
-.footer .newsletter-signup input { height: 40px; width: 120px; }
+.footer .newsletter-signup h5 { display: inline-block; font-size: 24px; line-height: 40px; }
+.footer .newsletter-signup input { height: 40px; width: 120px; padding: 0 8px; }
+.footer .newsletter-signup input[type=submit] { height: 40px; width: 120px; }
 
 .homepage .loaded { animation: fadeIn 0.8s ease-in-out 1 normal forwards; }
 
